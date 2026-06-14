@@ -87,7 +87,7 @@ CREATE TABLE List (
     title varchar(100) NOT NULL,
     description text NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp,
-    list_cover_url varchar(255) NOT NULL,
+    list_cover_url varchar(255) NULL,
     CONSTRAINT List_pk PRIMARY KEY (list_id)
 );
 

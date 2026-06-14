@@ -137,7 +137,7 @@ BEGIN
     VALUES (p_user_id, p_game_id, p_play_status, current_timestamp)
     ON CONFLICT (user_id, game_id) 
     DO UPDATE SET 
-        play_status = EXCLUDED.play_status
+        play_status = EXCLUDED.play_status;
 END;
 $$;
 

@@ -138,7 +138,6 @@ BEGIN
     ON CONFLICT (user_id, game_id) 
     DO UPDATE SET 
         play_status = EXCLUDED.play_status,
-        added_at = current_timestamp;
 END;
 $$;
 

@@ -149,7 +149,8 @@ CREATE TABLE User_Library (
     play_status varchar(20) NOT NULL,
     added_at timestamp NOT NULL DEFAULT current_timestamp,
     CONSTRAINT check_play_status CHECK (play_status IN ('Playing', 'Completed', 'Dropped', 'Plan to Play')),
-    CONSTRAINT User_Library_pk PRIMARY KEY (library_id)
+    CONSTRAINT User_Library_pk PRIMARY KEY (library_id),
+    CONSTRAINT User_library_unique_games UNIQUE (user_id, game_id)
 );
 
 -- Reference: Game_Genres to Games & Genres

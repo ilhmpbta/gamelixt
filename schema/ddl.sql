@@ -118,7 +118,7 @@ CREATE TABLE Reviews (
     review_text text NOT NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp,
     updated_at timestamp NOT NULL DEFAULT current_timestamp,
-    CONSTRAINT check_review_rating CHECK (rating >= 0 AND rating <= 10),
+    CONSTRAINT check_review_rating CHECK (rating >= 0 AND rating <= 5),
     CONSTRAINT Reviews_pk PRIMARY KEY (review_id),
     CONSTRAINT Reviews_unique_user_game UNIQUE (user_id, game_id)
 );

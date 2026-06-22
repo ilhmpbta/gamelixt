@@ -1,4 +1,4 @@
--- 1. UTILITY: Count List Votes (Upvotes - Downvotes)
+-- 1. Count List Votes (Upvotes - Downvotes)
 CREATE OR REPLACE FUNCTION count_list_vote(target_list_id uuid)
 RETURNS int AS $$
 DECLARE
@@ -14,7 +14,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 2. UTILITY: Count Thread Votes (Upvotes - Downvotes)
+-- 2. Count Thread Votes (Upvotes - Downvotes)
 CREATE OR REPLACE FUNCTION count_thread_vote(target_thread_id uuid)
 RETURNS int AS $$
 DECLARE
@@ -30,8 +30,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 3. ENDPOINT: Get Thread Tree View (/threads/[id])
--- Menarik thread parent beserta seluruh balasan beruntunnya dalam satu query
+-- 3. Get Thread Tree View (/threads/[id])
 CREATE OR REPLACE FUNCTION get_thread_tree(root_thread_id uuid)
 RETURNS TABLE (
     thread_id uuid,

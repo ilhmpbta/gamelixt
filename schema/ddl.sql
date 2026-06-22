@@ -87,7 +87,7 @@ CREATE TABLE List (
     title varchar(100) NOT NULL,
     description text NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp,
-    list_cover_url varchar(255) NOT NULL,
+    list_cover_url varchar(255) NULL,
     CONSTRAINT List_pk PRIMARY KEY (list_id)
 );
 
@@ -118,7 +118,7 @@ CREATE TABLE Reviews (
     review_text text NOT NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp,
     updated_at timestamp NOT NULL DEFAULT current_timestamp,
-    CONSTRAINT check_review_rating CHECK (rating >= 0 AND rating <= 10),
+    CONSTRAINT check_review_rating CHECK (rating >= 0 AND rating <= 5),
     CONSTRAINT Reviews_pk PRIMARY KEY (review_id),
     CONSTRAINT Reviews_unique_user_game UNIQUE (user_id, game_id)
 );
@@ -149,7 +149,8 @@ CREATE TABLE User_Library (
     play_status varchar(20) NOT NULL,
     added_at timestamp NOT NULL DEFAULT current_timestamp,
     CONSTRAINT check_play_status CHECK (play_status IN ('Playing', 'Completed', 'Dropped', 'Plan to Play')),
-    CONSTRAINT User_Library_pk PRIMARY KEY (library_id)
+    CONSTRAINT User_Library_pk PRIMARY KEY (library_id),
+    CONSTRAINT User_library_unique_games UNIQUE (user_id, game_id)
 );
 
 -- Reference: Game_Genres to Games & Genres

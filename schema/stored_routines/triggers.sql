@@ -93,9 +93,9 @@ RETURNS TRIGGER AS $$
 BEGIN
     IF EXISTS (
         SELECT 1
-        FROM List l
-        WHERE l.list_id = NEW.list_id
-          AND l.user_id = NEW.user_id
+        FROM Thread t
+        WHERE t.thread_id = NEW.thread_id
+          AND t.user_id = NEW.user_id
     ) THEN
         RAISE EXCEPTION 'You cannot vote on your own thread.';
     END IF;
@@ -105,5 +105,5 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_prevent_self_thread_vote
-BEFORE INSERT ON List_Votes
+BEFORE INSERT ON Thread_Votes
 FOR EACH ROW EXECUTE FUNCTION prevent_self_thread_vote();
